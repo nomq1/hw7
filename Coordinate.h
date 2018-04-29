@@ -1,10 +1,11 @@
 #pragma once
+#include <iostream>
 
 struct Coordinate {
-	int y,x;
-	Coordinate(int y, int x): x(x), y(y) {}
+	uint y,x;
+	Coordinate(uint y, uint x): x(x), y(y) {}
 };
 
-ostream& operator<< (ostream& out, const Coordinate& c) {
+inline std::ostream& operator<< (std::ostream& out, const Coordinate& c) {
 	return (out << c.x << "," << c.y);
 }

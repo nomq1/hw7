@@ -7,7 +7,7 @@ using namespace std;
 #include "Coordinate.h"
 
 
-void verify(char c) {
+inline void verify(char c) {
 	if (c!='.' && c!='X' && c!='O')
 		throw IllegalCharException{c};
 }
@@ -22,6 +22,8 @@ public:
 		loc = c;
 		return *this;
 	}
+
+	operator char() const { return loc; }
 };
 
 /**
@@ -29,40 +31,44 @@ public:
  */
 class Board {
 	char* theChars;
-	int theSize;
+	uint theSize;
 
-	uint offset(int x, int y) const {
+	uint offset(uint x, uint y) const {
 		return x + y*theSize;
 	}
 
 public:
-	Board(int size): theSize(size), theChars(new char[size*size]) {
+	Board(uint size): theSize(size), theChars(new char[size*size]) {
 		operator=('.');
+	}
+
+	uint size() const {
+		return theSize;
 	}
 
 	Board& operator=(char c) {
 		verify(c);
-		for(int i=0; i<theSize*theSize; ++i) {
+		for(uint i=0; i<theSize*theSize; ++i) {
 			theChars[i] = '.';
 		}
 		return *this;
 	}
 
 	char operator[] (Coordinate c) const {
-		if (c.x>=theSize || c.x<0 || c.y>=theSize || c.y<0)
+		if (c.x>=theSize || c.y>=theSize)
 			throw IllegalCoordinateException{c};
 		return theChars[offset(c.x,c.y)];
 	}
 
 	BoardLocation operator[] (Coordinate c) {
-		if (c.x>=theSize || c.x<0 || c.y>=theSize || c.y<0)
+		if (c.x>=theSize || c.y>=theSize)
 			throw IllegalCoordinateException{c};
 		return BoardLocation(theChars[offset(c.x,c.y)]);
 	}
 
 	ostream& output(ostream& out) const {
-		for (int y=0; y<theSize; ++y) {
-			for (int x=0; x<theSize; ++x) {
+		for (uint y=0; y<theSize; ++y) {
+			for (uint x=0; x<theSize; ++x) {
 				out << theChars[offset(x,y)];
 			}
 			out << endl;
@@ -71,6 +77,6 @@ public:
 	}
 };
 
-ostream& operator<<(ostream& out, const Board& board) {
+inline ostream& operator<<(ostream& out, const Board& board) {
 	return board.output(out);
 }

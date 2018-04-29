@@ -12,11 +12,9 @@ endif
 
 SOURCES=$(MAIN)
 
-all: a.out
+all: 
+	$(CXX) $(CPPFLAGS) *.cpp
 	./a.out
-
-a.out: $(SOURCES) $(HEADERS)
-	$(CXX) $(CPPFLAGS) $(SOURCES)
 
 clean:
 	$(RM) *.exe a.out *.class
