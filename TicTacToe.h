@@ -78,7 +78,7 @@ public:
 		_maxSteps(size*size),
 		_winner(nullptr) {}
 
-	void run(Player& xPlayer, Player& oPlayer) {
+	void play(Player& xPlayer, Player& oPlayer) {
 		_winner = nullptr;
 		xPlayer.setChar('X');
 		oPlayer.setChar('O');

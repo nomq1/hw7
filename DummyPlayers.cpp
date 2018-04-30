@@ -10,7 +10,7 @@ const Coordinate XYPlayer::play(const Board& board) {
 			}
 		}
 	}
-	return {0,0};  // did not find an empty square - quit
+	return {0,0};  // did not find an empty square - play on the top-left
 }
 
 
@@ -23,7 +23,7 @@ const Coordinate YXPlayer::play(const Board& board) {
 			}
 		}
 	}
-	return {0,0};  // did not find an empty square - quit
+	return {0,0};  // did not find an empty square - play on the top-left
 }
 
 
@@ -43,7 +43,7 @@ const Coordinate IllegalPlayer::play(const Board& board) {
 			}
 		}
 	}
-	return {0,0};  // did not find an illegal square - quit
+	return {0,0};  // did not find an illegal square - play on the top-left
 }
 
 
