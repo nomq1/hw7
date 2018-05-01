@@ -55,14 +55,15 @@ class TicTacToe {
 	void playAndVerify(Player& currentPlayer, Player& otherPlayer) {
 		Coordinate move{0,0};
 		try {
-			move = currentPlayer.play(_board);
+			Board boardCopy = _board;
+			move = currentPlayer.play(boardCopy);
 		} catch (...) {
 			_winner = &otherPlayer;
 		}
 
 		if (_board[move]=='.') {
 			_board[move] = currentPlayer.getChar();
-		} else { // illegal move
+		} else { // illegal move - other player wins
 			_winner = &otherPlayer;
 		}
 
