@@ -59,12 +59,14 @@ class TicTacToe {
 			move = currentPlayer.play(boardCopy);
 		} catch (...) {
 			_winner = &otherPlayer;
+			return;
 		}
 
 		if (_board[move]=='.') {
 			_board[move] = currentPlayer.getChar();
 		} else { // illegal move - other player wins
 			_winner = &otherPlayer;
+			return;
 		}
 
 		if (isWinner(currentPlayer.getChar())) {

@@ -4,6 +4,8 @@
 #include "Board.h"
 #include <string>
 
+using Coordinate=Pair;
+
 /**
  * An abstract player.
  */

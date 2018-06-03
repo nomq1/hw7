@@ -1,11 +1,5 @@
 #pragma once
 #include <iostream>
+#include "Pair.h"
 
-struct Coordinate {
-	uint y,x;
-	Coordinate(uint y, uint x): x(x), y(y) {}
-};
-
-inline std::ostream& operator<< (std::ostream& out, const Coordinate& c) {
-	return (out << c.x << "," << c.y);
-}
+using Coordinate=Pair;
