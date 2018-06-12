@@ -4,7 +4,7 @@
 
 CXX=clang++-5.0
 RM=rm -f
-CPPFLAGS=-std=c++17 
+CPPFLAGS=-std=c++14
 
 ifndef MAIN
   MAIN=./main.cpp
